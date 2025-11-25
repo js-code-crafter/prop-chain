@@ -63,8 +63,8 @@ export const Navbar: React.FC = () => {
               }`}
             >
               Dashboard
-              <ConnectWalletButton />
             </Link>
+            <ConnectWalletButton />
           </div>
 
           <div className="flex items-center space-x-4"></div>

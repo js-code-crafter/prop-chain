@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useWallet } from "@/context/wallet-context";
-import { connectMetaMask } from "@/utilities/wallet";
-import { Wallet } from "lucide-react";
+import { useWallet } from "../../context/wallet-context.tsx";
+import { connectMetaMask } from "../../utilities/wallet";
+import { Wallet, X } from "lucide-react";
 
 const ConnectWalletModal = ({ onClose }: { onClose: () => void }) => {
   const { account, setAccount } = useWallet();
@@ -36,14 +36,14 @@ const ConnectWalletModal = ({ onClose }: { onClose: () => void }) => {
         top: "20%",
         left: "50%",
         transform: "translateX(-50%)",
-        background: "white",
-        padding: "20px",
+        background: "#fff",
+        padding: "25px",
         borderRadius: 8,
         boxShadow: "0 0 10px rgba(0,0,0,0.3)",
       }}
     >
       <button onClick={onClose} style={{ float: "right" }}>
-        X
+        <X color="pink" />
       </button>
       {account ? (
         <div>
