@@ -14,7 +14,6 @@ import { DashboardPage } from "./pages/DashboardPage";
 import { useWallet, WalletProvider } from "./context/wallet-context";
 
 const AppContent: React.FC = () => {
-  const [walletError, setWalletError] = useState<string | null>(null);
   const [favorites, setFavorites] = useState(["1", "4"]);
   const navigate = useNavigate();
   const walletAddress = useWallet();
@@ -38,21 +37,7 @@ const AppContent: React.FC = () => {
 
   return (
     <>
-      <Navbar
-        onConnectWallet={handleConnectWallet}
-        walletAddress={walletAddress.account}
-      />
-      {walletError && (
-        <div className="fixed top-0 left-0 w-full z-50 bg-red-600 text-white p-4 text-center">
-          {walletError}
-          <button
-            className="ml-4 text-white underline"
-            onClick={() => setWalletError(null)}
-          >
-            Dismiss
-          </button>
-        </div>
-      )}
+      <Navbar />
       <Routes>
         <Route
           path="/"
