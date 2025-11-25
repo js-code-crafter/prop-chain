@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWallet } from "@/context/wallet-context";
 import { connectMetaMask } from "@/utilities/wallet";
+import { Wallet } from "lucide-react";
 
 const ConnectWalletModal = ({ onClose }: { onClose: () => void }) => {
   const { account, setAccount } = useWallet();
@@ -62,11 +63,7 @@ const ConnectWalletModal = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-export const ConnectWalletButton = ({
-  onConnectWallet,
-}: {
-  onConnectWallet: () => void;
-}) => {
+export const ConnectWalletButton = () => {
   const { account } = useWallet();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -76,14 +73,23 @@ export const ConnectWalletButton = ({
 
   return (
     <>
-      <button onClick={() => setModalOpen(true)}>
-        {shortAccount || "Connect Wallet"}
+      <button
+        className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+          account
+            ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+            : "bg-gradient-to-r from-blue-600 to-emerald-500 text-white hover:from-blue-700 hover:to-emerald-600 shadow-lg hover:shadow-xl transform hover:scale-105"
+        }`}
+        onClick={() => setModalOpen(true)}
+      >
+        <Wallet className="w-4 h-4" />
+        <span className="hidden sm:block">
+          {shortAccount || "Connect Wallet"}
+        </span>
       </button>
       {modalOpen && (
         <ConnectWalletModal
           onClose={() => {
             setModalOpen(false);
-            onConnectWallet();
           }}
         />
       )}
